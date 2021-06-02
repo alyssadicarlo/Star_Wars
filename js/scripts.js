@@ -1,6 +1,7 @@
 'use strict';
 
 const filmSelect = document.querySelector('#filmSelect');
+const defaultFilm = "A New Hope";
 
 function fetchFilms() {
     fetch(
@@ -54,11 +55,11 @@ function buildFilmResults(data) {
     const filmProducer = document.createElement('p');
     const filmReleaseDate = document.createElement('p');
     
-    filmTitle.innerText = `Title: ${filmData.title}`;
-    filmEpisodeNumber.innerText = `Episode: ${filmData.episode_id}`;
-    filmDirector.innerText = `Director: ${filmData.director}`;
-    filmProducer.innerText = `Producer: ${filmData.producer}`;
-    filmReleaseDate.innerText = `Release Date: ${filmData.release_date}`;
+    filmTitle.innerHTML = `<strong>Title:</strong> ${filmData.title}`;
+    filmEpisodeNumber.innerHTML = `<strong>Episode:</strong> ${filmData.episode_id}`;
+    filmDirector.innerHTML = `<strong>Director:</strong> ${filmData.director}`;
+    filmProducer.innerHTML = `<strong>Producer:</strong> ${filmData.producer}`;
+    filmReleaseDate.innerHTML = `<strong>Release Date:</strong> ${filmData.release_date}`;
 
     filmResults.append(filmTitle);
     filmResults.append(filmEpisodeNumber);
@@ -69,7 +70,7 @@ function buildFilmResults(data) {
     const characters = filmData.characters;
 
     const charactersTitle = document.createElement('p');
-    charactersTitle.innerText = "Characters:";
+    charactersTitle.innerHTML = "<strong>Characters:</strong>";
 
     const charactersList = document.createElement('ul');
 
@@ -105,4 +106,4 @@ function updateCharacterList(data) {
 
 
 fetchFilms();
-fetchFilmData("A New Hope");
+fetchFilmData(defaultFilm);
